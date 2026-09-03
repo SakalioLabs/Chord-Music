@@ -1,0 +1,5 @@
+PySide6>=6.6
+numpy>=1.24
+soundfile>=0.12
+mutagen>=1.46
+av>=12  # PyAV（捆绑 FFmpeg）：识别并解码 DTS-WAV 及 MP3/AAC 等压缩格式

@@ -1,0 +1,32 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---- 本地运行产物 / 临时文件 ----
+_err.txt
+_out.txt
+design_ref.png
+screenshot.png
+scripts/_*.py
+scripts/_*.png
+scripts/*.png
+scripts/*.tmp
+
+# ---- 用户本地数据（运行时在 %LOCALAPPDATA%/Chord 生成，不入库）----
+*.local.json
+
+# ---- 编辑器 / 系统 ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ---- 打包产物 ----
+build/
+dist/
+*.spec

@@ -1,0 +1,306 @@
+/* =====================================================================
+   弦乐播放器 · 商用级设计系统
+   令牌：中性色阶 / 品牌蓝 / 8pt 间距 / 统一圆角 / 明确文本层级
+   ===================================================================== */
+
+QWidget {
+    color: #1B1E26;            /* text-1 主文本 */
+    font-family: "HarmonyOS Sans SC", "HarmonyOS Sans", "Microsoft YaHei UI", sans-serif;
+    font-size: 14px;
+}
+
+/* ---------- 窗口底板（工作区灰底，侧栏/胶囊为白色浮层） ---------- */
+#Card {
+    background: #F2F3F6;
+    border-radius: 14px;
+    border: 1px solid #E1E4EA;
+}
+
+/* ---------- 右侧窗口控制手柄（透明，仅承担拖拽与按钮）；侧栏 Chord 头部同为透明 ---------- */
+#WinHandle, #ChordHead { background: transparent; }
+#ChordLogo {
+    color: #1B1E26;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: transparent;
+}
+QPushButton#btnMin, QPushButton#btnMax, QPushButton#btnClose {
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    min-width: 30px; max-width: 30px;
+    min-height: 30px; max-height: 30px;
+}
+QPushButton#btnMin:hover, QPushButton#btnMax:hover { background: #E7EAF0; }
+QPushButton#btnMin:pressed, QPushButton#btnMax:pressed { background: #DBDFE7; }
+QPushButton#btnClose:hover { background: #E5484D; }
+QPushButton#btnClose:pressed { background: #D13438; }
+
+/* ---------- 区域划分：侧栏白色贯通上下，内容区/播放栏透出工作区灰 ---------- */
+#Sidebar {
+    background: #FFFFFF;
+    border: none;
+    border-right: 1px solid #E9ECF1;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+#ContentArea { background: transparent; border: none; }
+#PlayerBar {
+    background: transparent;
+    border: none;
+}
+
+/* ---------- 播放控制白色胶囊 ---------- */
+#CtrlPill {
+    background: #FFFFFF;
+    border: 1px solid #E9ECF1;
+    border-radius: 27px;
+}
+#PillSep { background: #E9ECF1; border: none; }
+
+/* ---------- 侧边导航 ---------- */
+#Logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B1E26;
+    padding: 6px 10px 10px 10px;
+    letter-spacing: 1px;
+}
+QToolButton#NavButton {
+    text-align: left;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #5E6573;
+    font-size: 14px;
+    padding: 9px 12px;
+    margin: 2px 8px;
+    spacing: 10px;
+}
+QToolButton#NavButton:hover { background: #F3F5F9; color: #1B1E26; }
+QToolButton#NavButton[active="true"] {
+    background: #EAF1FE;
+    color: #2F5FD0;
+    font-weight: 600;
+}
+
+/* 歌单分区小标题 */
+#PlaylistSection { font-size: 12px; color: #9AA1AF; letter-spacing: 1px; background: transparent; }
+QToolButton#PlaylistAddBtn { border: none; border-radius: 6px; background: transparent; }
+QToolButton#PlaylistAddBtn:hover { background: #EDEFF3; }
+QToolButton#PlaylistAddBtn:pressed { background: #E2E6ED; }
+
+/* ---------- 内容区 ---------- */
+#PageTitle { font-size: 17px; font-weight: 700; color: #1B1E26; }
+#PageCount { font-size: 12px; color: #9AA1AF; }
+
+QPushButton#ToolBtn {
+    background: #3569E0;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+}
+QPushButton#ToolBtn:hover { background: #2B5BD0; }
+QPushButton#ToolBtn:pressed { background: #234DB8; }
+QPushButton#ToolBtn:disabled { background: #B9CBF2; }
+
+QPushButton#GhostBtn {
+    background: #FFFFFF;
+    color: #3569E0;
+    border: 1px solid #C6D6F7;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+}
+QPushButton#GhostBtn:hover { background: #F2F7FF; border-color: #3569E0; }
+QPushButton#GhostBtn:pressed { background: #E6EFFF; }
+
+/* 列表 */
+QListWidget#TrackList { background: transparent; border: none; outline: none; }
+QListWidget#TrackList::item {
+    border-radius: 8px;
+    margin: 1px 2px;
+    padding: 0;
+}
+QListWidget#TrackList::item:hover { background: #F4F6FA; }
+QListWidget#TrackList::item:selected { background: #EAF1FE; }
+#trackIndex  { font-size: 13px; color: #9AA1AF; min-width: 22px; }
+#trackTitle  { font-size: 14px; color: #1B1E26; background: transparent; }
+#trackFormat {
+    font-size: 11px; color: #5E6573;
+    background: #F0F2F6;
+    border-radius: 5px; padding: 2px 7px;
+}
+#trackDuration { font-size: 12px; color: #9AA1AF; background: transparent; }
+QPushButton#heartBtn, QPushButton#addListBtn { border: none; background: transparent; }
+
+QScrollBar:vertical { background: transparent; width: 8px; margin: 2px; }
+QScrollBar::handle:vertical { background: #D2D7E0; border-radius: 4px; min-height: 32px; }
+QScrollBar::handle:vertical:hover { background: #B6BDCA; }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; }
+QScrollBar::add-page, QScrollBar::sub-page { background: transparent; }
+QScrollBar:horizontal { height: 0; }
+
+/* ---------- 底部播放栏 ---------- */
+#Cover {
+    background: #EEF0F4;
+    border: 1px solid #E7EAF0;
+    border-radius: 10px;
+    min-width: 42px; max-width: 42px;
+    min-height: 42px; max-height: 42px;
+}
+QFrame#NowZone { border-radius: 10px; background: transparent; }
+QFrame#NowZone:hover { background: #F2F4F8; }
+#SongTitle { font-size: 14px; font-weight: 600; color: #1B1E26; }
+#SongFmt   { font-size: 11px; color: #9AA1AF; }
+#TimeLabel { font-size: 12px; color: #8A91A0; min-width: 40px; }
+
+QSlider#Progress:horizontal { background: transparent; height: 22px; }
+QSlider#Progress::groove:horizontal { height: 4px; background: #E6E9EF; border-radius: 2px; }
+QSlider#Progress::sub-page:horizontal { background: #3569E0; border-radius: 2px; }
+QSlider#Progress::handle:horizontal {
+    width: 13px; margin: -6px 0; border-radius: 7px;
+    background: #FFFFFF; border: 2px solid #3569E0;
+}
+QSlider#Progress::handle:horizontal:hover { background: #EAF1FE; }
+
+/* 模式 / 音量等线性图标按钮 */
+QPushButton#IconBtn {
+    border: none; border-radius: 8px; background: transparent;
+    min-width: 34px; max-width: 34px; min-height: 34px; max-height: 34px;
+}
+QPushButton#IconBtn:hover { background: #F2F4F8; }
+QPushButton#IconBtn:pressed { background: #E7EAF0; }
+QPushButton#IconBtn[on="true"] { background: #EAF1FE; }
+
+QSlider#Volume:horizontal { background: transparent; max-width: 88px; height: 22px; }
+QSlider#Volume::groove:horizontal { height: 4px; background: #E6E9EF; border-radius: 2px; }
+QSlider#Volume::sub-page:horizontal { background: #8A91A0; border-radius: 2px; }
+QSlider#Volume::handle:horizontal {
+    width: 11px; margin: -5px 0; border-radius: 6px;
+    background: #5E6573; border: 1px solid #5E6573;
+}
+
+/* 点击喇叭浮出的竖向音量浮层 */
+QFrame#VolumePopup {
+    background: #FFFFFF;
+    border: 1px solid #E4E8EF;
+    border-radius: 12px;
+}
+QSlider#VolumeSlider:vertical { background: transparent; margin: 2px 0; }
+QSlider#VolumeSlider::groove:vertical {
+    width: 4px; background: #E6E9EF; border-radius: 2px;
+}
+/* 垂直滑块：手柄下方（0→当前值）用 add-page 填充品牌色，上方保留灰槽 */
+QSlider#VolumeSlider::sub-page:vertical { background: transparent; }
+QSlider#VolumeSlider::add-page:vertical { background: #3569E0; border-radius: 2px; }
+QSlider#VolumeSlider::handle:vertical {
+    width: 12px; height: 12px; margin: 0 -5px; border-radius: 7px;
+    background: #FFFFFF; border: 2px solid #3569E0;
+}
+QSlider#VolumeSlider::handle:vertical:hover { background: #EAF1FE; }
+QPushButton#VolMuteBtn { border: none; border-radius: 6px; background: transparent; }
+
+/* 播放控制 */
+QPushButton#CtrlBtn { border: none; background: transparent; min-width: 38px; max-width: 38px; min-height: 36px; }
+QPushButton#PlayBtn {
+    border: none; border-radius: 21px;
+    background: #3569E0;
+    min-width: 42px; max-width: 42px; min-height: 42px; max-height: 42px;
+}
+QPushButton#PlayBtn:hover { background: #2B5BD0; }
+QPushButton#PlayBtn:pressed { background: #234DB8; }
+
+/* ---------- 空状态 ---------- */
+#EmptyIcon { background: transparent; }
+#EmptyTitle { font-size: 15px; font-weight: 600; color: #5E6573; }
+#EmptySub   { font-size: 12px; color: #9AA1AF; }
+#EmptyHint  { color: #9AA1AF; font-size: 14px; }
+
+/* ---------- 正在播放详情 ---------- */
+QPushButton#NpBack {
+    background: transparent; border: none; text-align: left;
+    color: #5E6573; font-size: 13px; padding: 6px 8px; border-radius: 8px;
+    max-width: 120px;
+}
+QPushButton#NpBack:hover { background: #F2F4F8; color: #1B1E26; }
+#NpCover {
+    background: #EEF0F4; border: 1px solid #E7EAF0; border-radius: 16px;
+}
+#NpTitle { font-size: 22px; font-weight: 700; color: #1B1E26; }
+#NpArtist { font-size: 15px; color: #5E6573; }
+#NpAlbum { font-size: 12px; color: #9AA1AF; }
+#LyricScroll { background: transparent; border: none; }
+#LyricScroll QWidget { background: transparent; }
+#LyricPlaceholder { color: #9AA1AF; font-size: 14px; }
+QLabel#LyricLine { color: #A6ADBB; font-size: 15px; }
+QLabel#LyricLine[active="true"] { color: #2F5FD0; font-size: 17px; font-weight: 600; }
+
+/* 全局 tooltip */
+QToolTip {
+    background: #2B2F3A;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 9px;
+    font-size: 12px;
+}
+
+/* =====================================================================
+   移动端（窄屏）形态
+   ===================================================================== */
+/* 底部横向导航栏：替代桌面左侧栏 */
+#MobileNav {
+    background: #FFFFFF;
+    border: none;
+    border-top: 1px solid #E9ECF1;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+QToolButton#MobileNavBtn {
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #9AA1AF;
+    font-size: 11px;
+    spacing: 3px;
+    padding: 4px 2px;
+}
+QToolButton#MobileNavBtn:hover { background: #F3F5F9; color: #5E6573; }
+QToolButton#MobileNavBtn[active="true"] { color: #2F5FD0; font-weight: 600; }
+
+/* 移动形态播放栏里只剩一个播放键时，胶囊去掉白底与描边（浮在灰底上） */
+#CtrlPill[mobile="true"] { background: transparent; border: none; }
+
+/* 正在播放详情内的移动控制条 */
+#MobileCtrl { background: transparent; border: none; }
+
+/* 歌单内容页返回“歌单中心”的按钮 */
+QPushButton#PlaylistBackBtn {
+    border: none; border-radius: 8px; background: transparent;
+    min-width: 30px; max-width: 30px; min-height: 30px; max-height: 30px;
+}
+QPushButton#PlaylistBackBtn:hover { background: #E7EAF0; }
+QPushButton#PlaylistBackBtn:pressed { background: #DBDFE7; }
+
+/* 移动“歌单中心” */
+#HubTitle { font-size: 16px; font-weight: 700; color: #1B1E26; background: transparent; }
+#HubEmpty { color: #9AA1AF; font-size: 13px; background: transparent; padding-top: 40px; }
+QToolButton#HubItem {
+    text-align: left;
+    background: #FFFFFF;
+    border: 1px solid #E9ECF1;
+    border-radius: 10px;
+    color: #1B1E26;
+    font-size: 14px;
+    padding: 10px 14px;
+    margin: 0 2px;
+    spacing: 10px;
+}
+QToolButton#HubItem:hover { background: #F5F7FB; border-color: #DDE2EA; }
+QToolButton#HubItem:pressed { background: #EEF1F6; }
